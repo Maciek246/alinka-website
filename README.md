@@ -1,14 +1,14 @@
 # Alinka website
-asdasd
+
 ## Runing 
 
 1. Fill a file with environment variables [`app.env`]
-sdfsdf
+
 2. Build and start docker containe
 ```bash
 make start
 ```
-asdas
+
 3. Start React app locally
 ```bash
 make local
