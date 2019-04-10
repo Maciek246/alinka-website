@@ -4,12 +4,12 @@ services:
 jobs:
   stage: run
     script:
-      - make start
+      - echo "asd"
   stage: test
     script:
-      - docker-compose exec app -T npm run test
+      - echo "asd"
   stage: deploy
     script:
-      - make deploy
+      - echo "asd"
 after_success:
   - echo "Success"
