@@ -1,15 +1,14 @@
-sudo: required
 services:
   - docker
 jobs:
   stage: run
     script:
-      - make start
+      - echo "test"
   stage: test
     script:
-      - docker-compose exec app -T npm run test
+      - echo "test"
   stage: deploy
     script:
-      - make deploy
+      - echo deploy
 after_success:
   - echo "Success"
