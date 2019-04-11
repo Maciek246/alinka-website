@@ -1,6 +1,10 @@
-services:
-  - docker
+sudo: false
 language: node_js
+node_js:
+  - 'node'
+  - '6'
+  - '5'
+  - '4'
 jobs:
   stage: run
     script:
@@ -13,3 +17,4 @@ jobs:
       - echo deploy
 after_success:
   - echo "Success"
+
