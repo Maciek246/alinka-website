@@ -8,7 +8,7 @@ jobs:
           - make start  
     - stage: test 
         script: 
-          - docker-comp ose exec app -T npm run test
+          - docker-compose exec app -T npm run test
     - stage: deploy 
         script: 
           - make deploy 
