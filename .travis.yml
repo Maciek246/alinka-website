@@ -2,14 +2,15 @@ sudo: required
 services:
   - docker
 jobs:
-  stage: run
-    script:
-      - echo "asd"
-  stage: test
-    script:
-      - echo "asd"
-  stage: deploy
-    script:
-      - echo "asd"
+  include:
+    stage: run  
+      script: 
+        - make start  
+    stage: test 
+      script: 
+        - docker-comp ose exec app -T npm run test
+    stage: deploy 
+      script: 
+        - make deploy 
 after_success:
   - echo "Success"
