@@ -3,14 +3,14 @@ services:
   - docker
 jobs:
   include:
-    stage: run  
-      script: 
-        - make start  
-    stage: test 
-      script: 
-        - docker-comp ose exec app -T npm run test
-    stage: deploy 
-      script: 
-        - make deploy 
+    - stage: run  
+        script: 
+          - make start  
+    - stage: test 
+        script: 
+          - docker-comp ose exec app -T npm run test
+    - stage: deploy 
+        script: 
+          - make deploy 
 after_success:
   - echo "Success"
