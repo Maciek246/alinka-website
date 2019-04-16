@@ -7,13 +7,13 @@ services:
 jobs:
   include:
     - stage: run  
-        script: 
-          - make start  
+      script: 
+        - make start  
     - stage: test 
-        script: 
-          - docker-compose exec app -T npm run test
+      script: 
+        - docker-compose exec app -T npm run test
     - stage: deploy 
-        script: 
-          - make deploy 
+      script: 
+        - make deploy 
 after_success:
   - echo "Success"
