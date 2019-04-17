@@ -11,7 +11,7 @@ local:
 	docker-compose exec -T app npm start --host 0.0.0.0
 
 test:
-	docker-compose exec app npm run test
+	docker-compose exec app npm run test --all --ci
 
 bash:
 	docker-compose exec app bash
