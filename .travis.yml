@@ -2,15 +2,13 @@ sudo: required
 language: node_js
 node_js:
   - 'stable'
-services:
-  - docker
-jobs:
-  include:
-    - stage: test 
-      script:
-        - make start 
-        - make test
-    - stage: deploy 
-      script:
-        - make start
-        - make deploy
+install: npm install
+script: npm run test
+deploy:
+  provider: s3
+  access_key_id: AWS_ACCESS_KEY
+  secret_access_key: AWS_SECRET_KEY
+  bucket: S3_BUCKET
+  skip_cleanup: true
+  on:
+    branch: master
