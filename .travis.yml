@@ -1,15 +1,18 @@
 services:
   - docker
 language: node_js
-jobs:
-  stage: run
-    script:
-      - echo "test"
-  stage: test
-    script:
-      - echo "test"
-  stage: deploy
-    script:
-      - echo deploy
-after_success:
-  - echo "Success"
+node_js:
+  - 'stable'
+cache:
+  directories:
+    - node_modules
+install: npm install
+script: npm run test
+deploy:
+  provider: s3
+  access_key_id: AWS_ACCESS_KEY
+  secret_access_key: AWS_SECRET_KEY
+  bucket: S3_BUCKET
+  skip_cleanup: true
+  on:
+    branch: master
