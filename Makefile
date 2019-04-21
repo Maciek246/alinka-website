@@ -18,5 +18,7 @@ credentials:
 	cat ~/.aws/credentials
 	docker-compose exec app aws configure --profile $(PROFILE)
 
+TARGET=
 deploy:
-	docker-compose exec -T app bash ./.makefile/deploy.sh
+	docker-compose exec -T app terraform init -reconfigure -backend-config=config/$(TARGET).tfbackend
+	docker-compose exec -T app terraform apply -auto-approve -var-file=config/$(TARGET).tfvars

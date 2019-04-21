@@ -7,11 +7,16 @@ ARG USER_ID
 WORKDIR /workspace
 
 RUN apt-get update && apt-get install -y \
-    awscli wget vim-tiny \
-    && rm -rf /var/lib/apt/lists/*
+    wget vim-tiny unzip python-dev python-pip
 
-COPY package.json package-lock.json /workspace/
+RUN wget https://releases.hashicorp.com/terraform/0.11.13/terraform_0.11.13_linux_amd64.zip && \
+    unzip terraform_0.11.13_linux_amd64.zip && \
+    mv terraform /bin && \
+    rm terraform_0.11.13_linux_amd64.zip
 
+COPY package.json package-lock.json requirements-dev.txt /workspace/
+
+RUN pip install -r requirements-dev.txt
 RUN npm install
 
 USER node
