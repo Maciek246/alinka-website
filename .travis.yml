@@ -1,15 +1,15 @@
-sudo: required
 services:
   - docker
-jobs:
-  stage: run
-    script:
-      - make start
-  stage: test
-    script:
-      - docker-compose exec app -T npm run test
-  stage: deploy
-    script:
-      - make deploy_ci
-after_success:
-  - echo "Success"
+language: node_js
+node_js:
+  - 'stable'
+cache:
+  directories:
+    - node_modules
+install: npm install
+script: npm run test
+deploy:
+  provider: script
+  script: sh make deploy_ci TARGET=$TARGET AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+  on:
+    branch: develop
