@@ -10,6 +10,6 @@ jobs:
       - docker-compose exec app -T npm run test
   stage: deploy
     script:
-      - make deploy
+      - make deploy_ci
 after_success:
   - echo "Success"

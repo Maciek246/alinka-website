@@ -22,3 +22,12 @@ TARGET=
 deploy:
 	docker-compose exec -T app terraform init -reconfigure -backend-config=config/$(TARGET).tfbackend
 	docker-compose exec -T app terraform apply -auto-approve -var-file=config/$(TARGET).tfvars
+
+TARGET=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+deploy_ci:
+	docker-compose exec -T app aws configure set aws_access_key_id $(AWS_ACCESS_KEY_ID)
+	docker-compose exec -T app aws configure set aws_secret_access_key $(AWS_SECRET_ACCESS_KEY)
+	docker-compose exec -T app terraform init -reconfigure -backend-config=config/$(TARGET).tfbackend
+	docker-compose exec -T app terraform apply -auto-approve -var-file=config/$(TARGET).tfvars
