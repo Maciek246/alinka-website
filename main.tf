@@ -3,8 +3,6 @@ provider "aws" {
   profile = "default"
 }
 
-variable "aws_region" {}
-
 terraform {
   backend "s3" {}
 }
