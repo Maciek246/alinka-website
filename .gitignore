@@ -22,5 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-config/*
+config/*.tfvars
+config/*.tfbackend
 .terraform
+!config/tfbackend.template
+!config/tfvars.template
