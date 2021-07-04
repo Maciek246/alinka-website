@@ -1,0 +1,15 @@
+services:
+  - docker
+language: node_js
+jobs:
+  stage: run
+    script:
+      - echo "test"
+  stage: test
+    script:
+      - echo "test"
+  stage: deploy
+    script:
+      - echo deploy
+after_success:
+  - echo "Success"
