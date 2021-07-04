@@ -1,0 +1,17 @@
+sudo: false
+language: node_js
+node_js:
+  - 'stable'
+jobs:
+  stage: run
+    script:
+      - echo "test"
+  stage: test
+    script:
+      - echo "test"
+  stage: deploy
+    script:
+      - echo deploy
+after_success:
+  - echo "Success"
+
